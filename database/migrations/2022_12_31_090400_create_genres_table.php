@@ -21,71 +21,97 @@ return new class extends Migration {
         DB::table('genres')->insert(
             [
                 [
-                    'name'       => 'pop/rock',
+                    'name'       => 'Action',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'punk',
+                    'name'       => 'Adventure',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'industrial',
+                    'name'       => 'Animation',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'hardrock',
+                    'name'       => 'Comedy',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'new wave',
+                    'name'       => 'Crime',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'dance',
+                    'name'       => 'Documentary',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'reggae',
+                    'name'       => 'Drama',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'jazz',
+                    'name'       => 'Family',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'dubstep',
+                    'name'       => 'Fantasy',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'blues',
+                    'name'       => 'History',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'indie rock',
+                    'name'       => 'Horror',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'noise',
+                    'name'       => 'Music',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'electro',
+                    'name'       => 'Mystery',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'techno',
+                    'name'       => 'Romance',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'folk',
+                    'name'       => 'Science Fiction',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'hip hop',
+                    'name'       => 'TV Movie',
                     'created_at' => now()
                 ],
+
                 [
-                    'name'       => 'soul',
+                    'name'       => 'Thriller',
+                    'created_at' => now()
+                ],
+
+                [
+                    'name'       => 'War',
+                    'created_at' => now()
+                ],
+
+                [
+                    'name'       => 'Western',
                     'created_at' => now()
                 ],
             ]

@@ -16,8 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('genre_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('title');
-            $table->unsignedInteger('tmdb_id
-            ')->default(1);
+            $table->unsignedInteger('tmdb_id')->default(1);
             $table->float('price', 5, 2)->default(4.99);
             $table->string('release_date');
             $table->string('cover');
