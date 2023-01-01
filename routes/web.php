@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'home')->name('home');
-Route::get('playground', [Playground::class, 'index']);
+Route::get('playground', [Playground::class, 'index'])->name('playground');
 
 Route::middleware([
     'auth:sanctum',
