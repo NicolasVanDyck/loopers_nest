@@ -23,7 +23,6 @@
         {{-- Main content --}}
         {{ $slot }}
     </main>
-    <x-nicolas.carousel/>
     <x-layout.footer/>
 </div>
 @stack('script')
