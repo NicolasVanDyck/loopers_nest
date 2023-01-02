@@ -15,6 +15,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                heading: ['Saira Stencil One', 'cursive'],
+                body: ['Play', 'sans-serif']
             },
         },
     },

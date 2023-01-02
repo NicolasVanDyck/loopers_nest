@@ -10,7 +10,9 @@
             <p class="p-4 text-white">{{ $slot }}</p>
         </div>
         <x-heroicon-o-shopping-bag
-            class="absolute bottom-0 right-0 h-12 w-12 text-white"/>
+            class="absolute bottom-0 right-0 h-12 w-12 text-white cursor-pointer"/>
+        <x-bi-person-badge
+            class="absolute bottom-1 right-11 h-9 w-10 text-white cursor-pointer"/>
     </div>
 
 </div>
