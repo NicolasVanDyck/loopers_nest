@@ -17,7 +17,7 @@
     </header>
     <main class="container mx-auto p-4 flex-1 px-4">
         {{-- Title --}}
-        <h1 class="text-5xl mb-4 text-red-500 justify-center flex">
+        <h1 class="text-5xl mb-4 text-red-600 justify-center flex">
             {{ $title ?? 'Title here...' }}
         </h1>
         {{-- Main content --}}

@@ -84,13 +84,6 @@
             </x-nicolas.carousel>
         </div>
     </div>
-    <x-nicolas.card>
-        <x-slot name="image">{{$base_url}}/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg
-        </x-slot>
-        <x-slot name="alt">{{ $moviesPopular[0]['title'] }}</x-slot>
-        {{$moviesPopular[0]['overview']}}
-    </x-nicolas.card>
-
     @push('script')
         <script>
             console.log('The Vinyl Shop JavaScript works! 🙂')

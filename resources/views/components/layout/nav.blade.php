@@ -5,7 +5,7 @@
         <a href="{{ route('home') }}">
             <img class="w-5 h-5" src="assets/icons/android-chrome-192x192.png" alt="Logo">
         </a>
-        <a class="hidden sm:block font-heading text-lg text-red-500" href="{{ route('home') }}">
+        <a class="hidden sm:block font-heading text-lg text-red-600" href="{{ route('home') }}">
             Looper's Nest
         </a>
         <x-jet-nav-link href="{{ route('store') }}" :active="request()->routeIs('store')">
@@ -25,7 +25,7 @@
             Register
         </x-jet-nav-link>
         <x-jet-nav-link href="{{ route('home') }}" :active="request()->routeIs('basket')">
-            <x-fas-shopping-basket class="w-4 h-4"/>
+            <x-heroicon-o-shopping-bag class="w-4 h-4"/>
         </x-jet-nav-link>
         {{-- dropdown navigation--}}
         <x-jet-dropdown align="right" width="48">
