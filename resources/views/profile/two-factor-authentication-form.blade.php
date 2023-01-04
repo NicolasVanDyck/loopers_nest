@@ -8,7 +8,7 @@
     </x-slot>
 
     <x-slot name="content">
-        <h3 class="text-lg font-medium text-gray-900">
+        <h3 class="text-lg font-medium text-gray-400">
             @if ($this->enabled)
                 @if ($showingConfirmation)
                     {{ __('Finish enabling two factor authentication.') }}
@@ -50,13 +50,14 @@
 
                 @if ($showingConfirmation)
                     <div class="mt-4">
-                        <x-jet-label for="code" value="{{ __('Code') }}" />
+                        <x-jet-label for="code" value="{{ __('Code') }}"/>
 
-                        <x-jet-input id="code" type="text" name="code" class="block mt-1 w-1/2" inputmode="numeric" autofocus autocomplete="one-time-code"
-                            wire:model.defer="code"
-                            wire:keydown.enter="confirmTwoFactorAuthentication" />
+                        <x-jet-input id="code" type="text" name="code" class="block mt-1 w-1/2" inputmode="numeric"
+                                     autofocus autocomplete="one-time-code"
+                                     wire:model.defer="code"
+                                     wire:keydown.enter="confirmTwoFactorAuthentication"/>
 
-                        <x-jet-input-error for="code" class="mt-2" />
+                        <x-jet-input-error for="code" class="mt-2"/>
                     </div>
                 @endif
             @endif

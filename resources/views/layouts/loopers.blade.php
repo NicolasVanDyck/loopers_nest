@@ -13,7 +13,7 @@
 <div class="flex flex-col space-y-4 min-h-screen text-white bg-black">
     <header class="shadow bg-black/70 sticky inset-0 backdrop-blur-sm z-10 border-b-4 border-b-gray-600">
         {{--  Navigation  --}}
-        <x-layout.nav/>
+        @livewire('layout.nav-bar')
     </header>
     <main class="container mx-auto p-4 flex-1 px-4">
         {{-- Title --}}
