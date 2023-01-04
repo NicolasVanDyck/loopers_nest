@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Genre;
 use App\Models\Movie;
 use Http;
 use Livewire\Component;
@@ -12,10 +13,21 @@ class Store extends Component
     use WithPagination;
 
     public $perPage = 6;
+    public $name;
+    public $genre = '%';
+    public $price;
+    public $priceMin, $priceMax;
+
+
     public $selectedMovie;
     public $showModal = false;
     public $showModal2 = false;
 
+    public function updated($propertyName, $propertyValue)
+    {
+        // dump($propertyName, $propertyValue);
+        $this->resetPage();
+    }
 
     public function showOverview(Movie $movie)
     {
@@ -35,6 +47,13 @@ class Store extends Component
 //        dump($this->selectedMovie);
     }
 
+    public function mount()
+    {
+        $this->priceMin = ceil(Movie::min('price'));
+        $this->priceMax = ceil(Movie::max('price'));
+        $this->price = $this->priceMax;
+    }
+
     public function render()
     {
         //Popular movies
@@ -42,14 +61,19 @@ class Store extends Component
 //        $responsePopular = json_decode($responsePopular, true);
 //        $moviesPopular = $responsePopular['results'];
 
-
+        $allGenres = Genre::has('movies')->withCount('movies')->get();
         $movies = Movie::orderBy('title')
+            ->where([
+                ['title', 'like', "%{$this->name}%"],
+                ['genre_id', 'like', $this->genre],
+                ['price', '<=', $this->price],
+            ])
             ->paginate($this->perPage);
 //        dump($movies->toArray()[0]);
 
         $base_url = "https://image.tmdb.org/t/p/original";
 
-        return view('livewire.store', compact('movies', 'base_url'))
+        return view('livewire.store', compact('movies', 'base_url', 'allGenres'))
             ->layout('layouts.loopers', [
                 'description' => "Looper's Nest Store Page",
                 'title'       => 'Store',

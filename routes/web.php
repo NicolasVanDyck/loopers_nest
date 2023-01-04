@@ -28,6 +28,7 @@ Route::middleware(['auth', 'active', 'admin'])->prefix('admin')->name('admin.')-
     Route::get('movies', Movies::class)->name('movies');
 });
 
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

@@ -1,4 +1,60 @@
 <div>
+    {{-- filter section: artist or title, genre, max price and records per page --}}
+    <div class="grid grid-cols-10 gap-4">
+        <div class="col-span-10 md:col-span-5 lg:col-span-3">
+            <x-jet-label for="name" value="Search"/>
+            <div
+                class="relative">
+                <x-jet-input id="name" type="text"
+                             wire:model="name"
+                             class="block mt-1 w-full text-black"
+                             placeholder="Search Movie"/>
+                <div
+                    class="w-5 absolute right-4 top-3 cursor-pointer">
+                    <x-phosphor-x-duotone/>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-5 md:col-span-2 lg:col-span-2 text-black">
+            <x-jet-label for="genre" value="Genre"/>
+            <x-tmk.form.select id="genre"
+                               wire:model="genre"
+                               class="block mt-1 w-full">
+                <option class="text-gray-400" value="%">All Genres</option>
+                @foreach($allGenres as $g)
+                    <option class="text-gray-400" value="{{$g->id}}">{{$g->name}}({{$g->movies_count}})
+                    </option>
+                @endforeach
+
+            </x-tmk.form.select>
+        </div>
+        <div class="col-span-5 md:col-span-3 lg:col-span-2 text-black">
+            <x-jet-label for="perPage" value="Movies per page"/>
+            <x-tmk.form.select id="perPage"
+                               wire:model="perPage"
+                               class="block mt-1 w-full ">
+                <option class="text-gray-400" value="3">3</option>
+                <option class="text-gray-400" value="6">6</option>
+                <option class="text-gray-400" value="9">9</option>
+                <option class="text-gray-400" value="12">12</option>
+                <option class="text-gray-400" value="15">15</option>
+                <option class="text-gray-400" value="18">18</option>
+                <option class="text-gray-400" value="24">24</option>
+            </x-tmk.form.select>
+        </div>
+        <div class="col-span-10 lg:col-span-3">
+            <x-jet-label for="price">Price &le;
+                <output id="pricefilter" name="pricefilter">{{$price}}</output>
+            </x-jet-label>
+            <x-jet-input type="range" id="price" name="price"
+                         wire:model="price"
+                         min="{{$priceMin}}"
+                         max="{{$priceMax}}"
+                         oninput="pricefilter.value = price.value"
+                         class="block mt-4 w-full h-2 bg-red-100 accent-red-600 appearance-none"/>
+        </div>
+    </div>
+    {{--    master section--}}
     <div class="grid grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 m-8">
         @foreach($movies as $movie)
             <div class="relative"
