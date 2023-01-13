@@ -57,40 +57,13 @@
     {{--    master section--}}
     <div class="grid grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 m-8">
         @foreach($movies as $movie)
-            <x-nicolas.card type="full">
+            <x-nicolas.card type="normal">
                 <x-slot name="id">{{$movie->id}}</x-slot>
                 <x-slot name="cover">{{$movie->cover}}</x-slot>
                 <x-slot name="title">{{$movie->title}}</x-slot>
                 <x-slot name="overview">{{$movie->overview}}</x-slot>
                 <x-slot name="baseurl">{{$base_url}}</x-slot>
             </x-nicolas.card>
-
-
-            {{--            <div class="relative"--}}
-            {{--                 wire:key="movie-{{$movie->id}}">--}}
-            {{--                <img--}}
-            {{--                    class="rounded-lg w-full "--}}
-            {{--                    src="{{$base_url}}{{$movie->cover}}"--}}
-            {{--                    alt="{{ $movie->title }}"--}}
-            {{--                />--}}
-            {{--                <div--}}
-            {{--                    class="absolute top-0 right-0 bottom-0 left-0 w-full overflow-hidden opacity-0 hover:opacity-100 bg-black/60 rounded-lg">--}}
-            {{--                    <div class="flex justify-center items-center h-full">--}}
-            {{--                        <p class="p-4 text-white text-sm hidden md:block ">{{ $movie->overview }}</p>--}}
-            {{--                    </div>--}}
-            {{--                    <x-heroicon-o-shopping-bag--}}
-            {{--                        class="absolute bottom-0 right-0 h-5 w-5 text-white cursor-pointer outline-0"--}}
-            {{--                        data-tippy-content="Not implemented"/>--}}
-            {{--                    <x-fas-list--}}
-            {{--                        wire:click="showOverview({{$movie->id}})"--}}
-            {{--                        class="absolute bottom-0 left-6 h-5 w-5 text-white cursor-pointer md:hidden outline-0"--}}
-            {{--                        data-tippy-content="Show overview"/>--}}
-            {{--                    <x-bi-person-badge--}}
-            {{--                        wire:click="showActors({{$movie->id}})"--}}
-            {{--                        class="absolute bottom-0 left-0 h-5 w-6 text-white cursor-pointer outline-0"--}}
-            {{--                        data-tippy-content="Show Actors"/>--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
         @endforeach
     </div>
     {{--    Detail section--}}
