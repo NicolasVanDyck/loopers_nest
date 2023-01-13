@@ -56,7 +56,7 @@
                             <div class="border-t border-gray-100"></div>
                             {{-- admins only --}}
                             <div class="block px-4 py-2 text-xs text-gray-400">Admin</div>
-                            <x-jet-dropdown-link href="{{ route('home') }}">Genres</x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('admin.genres') }}">Genres</x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('admin.movies') }}">Movies</x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('home') }}">Covers</x-jet-dropdown-link>
                         @endif
