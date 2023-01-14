@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,23 +25,10 @@ class Genre extends Model
      *    - or append the attributes in runtime with Model::get()->append([])
      */
     protected $appends = [];
-
-    /**
-     * Accessors and mutators (method name is the attribute name)
-     * get: transform the attribute after it has retrieved from database
-     * set: transform the attribute before it is sent to database
-     */
     /**
      * Add attributes that should be hidden to the $hidden array
      */
     protected $hidden = [];
-
-
-    /**
-     * Apply the scope to a given Eloquent query builder
-     * prefix the method name with 'scope' e.g. 'scopeIsActive()'
-     * Utilize the scope in the controller  Model::is_active()->get();
-     */
 
     /**
      * Relationship between models
@@ -51,4 +40,24 @@ class Genre extends Model
     {
         return $this->hasMany(Movie::class);    // a genre has many movies
     }
+
+    /**
+     * Apply the scope to a given Eloquent query builder
+     * prefix the method name with 'scope' e.g. 'scopeIsActive()'
+     * Utilize the scope in the controller  Model::is_active()->get();
+     */
+
+    /**
+     * Accessors and mutators (method name is the attribute name)
+     * get: transform the attribute after it has retrieved from database
+     * set: transform the attribute before it is sent to database
+     */
+    protected function name(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => ucfirst($value),         // accessor
+            set: fn($value) => strtolower($value),      // mutator
+        );
+    }
+
 }

@@ -4,7 +4,7 @@
         <div class="flex items-center space-x-2 ">
             {{-- Logo --}}
             <a href="{{ route('home') }}">
-                <img class="w-5 h-5" src="assets/icons/android-chrome-192x192.png" alt="Logo">
+                <img class="w-5 h-5" src="/assets/icons/android-chrome-192x192.png" alt="Logo">
             </a>
             <a class="hidden sm:block font-heading text-lg text-red-600" href="{{ route('home') }}">
                 Looper's Nest
@@ -58,7 +58,7 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">Admin</div>
                             <x-jet-dropdown-link href="{{ route('admin.genres') }}">Genres</x-jet-dropdown-link>
                             <x-jet-dropdown-link href="{{ route('admin.movies') }}">Movies</x-jet-dropdown-link>
-                            <x-jet-dropdown-link href="{{ route('home') }}">Covers</x-jet-dropdown-link>
+                            <x-jet-dropdown-link href="{{ route('admin.users') }}">Users</x-jet-dropdown-link>
                         @endif
                     </x-slot>
                 </x-jet-dropdown>

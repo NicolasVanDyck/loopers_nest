@@ -21,97 +21,97 @@ return new class extends Migration {
         DB::table('genres')->insert(
             [
                 [
-                    'name'       => 'Action',
+                    'name'       => 'action',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Adventure',
+                    'name'       => 'adventure',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Animation',
+                    'name'       => 'animation',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Comedy',
+                    'name'       => 'comedy',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Crime',
+                    'name'       => 'crime',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Documentary',
+                    'name'       => 'documentary',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Drama',
+                    'name'       => 'drama',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Family',
+                    'name'       => 'family',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Fantasy',
+                    'name'       => 'fantasy',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'History',
+                    'name'       => 'history',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Horror',
+                    'name'       => 'horror',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Music',
+                    'name'       => 'music',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Mystery',
+                    'name'       => 'mystery',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Romance',
+                    'name'       => 'romance',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Science Fiction',
+                    'name'       => 'science Fiction',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'TV Movie',
+                    'name'       => 'tV Movie',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Thriller',
+                    'name'       => 'thriller',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'War',
+                    'name'       => 'war',
                     'created_at' => now()
                 ],
 
                 [
-                    'name'       => 'Western',
+                    'name'       => 'western',
                     'created_at' => now()
                 ],
             ]
