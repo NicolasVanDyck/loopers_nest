@@ -29,6 +29,7 @@ class Movie extends Model
      * get: transform the attribute after it has retrieved from database
      * set: transform the attribute before it is sent to database
      */
+
     /**
      * Add attributes that should be hidden to the $hidden array
      */

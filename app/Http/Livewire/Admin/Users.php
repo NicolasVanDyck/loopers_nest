@@ -10,7 +10,7 @@ class Users extends Component
     {
         return view('livewire.admin.movies')
             ->layout('layouts.loopers', [
-                'description' => 'Manage the users of your movie store',
+                'description' => 'Manage the users of our movie store',
                 'title'       => 'Users',
             ]);
     }
