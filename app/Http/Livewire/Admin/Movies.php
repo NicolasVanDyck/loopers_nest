@@ -13,7 +13,6 @@ class Movies extends Component
     use WithPagination;
 
     // filter and pagination
-    public $search;
     public $perPage = 5;
     public $name;
     public $genres;
@@ -74,9 +73,7 @@ class Movies extends Component
     // reset the paginator
     public function updated($propertyName, $propertyValue)
     {
-        // reset if the $search or $perPage property has changed (updated)
-        if (in_array($propertyName, ['search', 'perPage']))
-            $this->resetPage();
+        $this->resetPage();
     }
 
     // create a new record
