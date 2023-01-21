@@ -16,7 +16,7 @@
      wire:key="movie-{{$id}}">
     <img
         class="{{$style}} "
-        src="{{$baseurl}}{{$cover}}"
+        src="{{$cover}}"
         alt="{{ $title }}"
     />
     <div

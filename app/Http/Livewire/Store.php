@@ -32,6 +32,10 @@ class Store extends Component
     public function showOverview(Movie $movie)
     {
         $this->selectedMovie = $movie;
+        if ($this->selectedMovie['cover'] == null)
+            $this->selectedMovie['cover'] = '/storage/covers/No_Cover.jpg';
+        else $this->selectedMovie['cover'] = "https://image.tmdb.org/t/p/original" . $this->selectedMovie['cover'];
+
 //        dump($this->selectedMovie->toArray());
         $this->showModal2 = true;
     }
@@ -39,9 +43,13 @@ class Store extends Component
     public function showActors(Movie $movie)
     {
         $this->selectedMovie = $movie;
-        $url = "https://api.themoviedb.org/3/movie/{$movie->tmdb_id}/credits?api_key=b5e41163045c9d15a91c85932fff4f4d&language=en-US";
-        $response = Http::get($url)->json();
-        $this->selectedMovie['cast'] = $response['cast'];
+        $url_cast = "https://api.themoviedb.org/3/movie/{$movie->tmdb_id}/credits?api_key=b5e41163045c9d15a91c85932fff4f4d&language=en-US";
+        $response_cast = Http::get($url_cast)->json();
+        $this->selectedMovie['cast'] = $response_cast['cast'];
+        if ($this->selectedMovie['cover'] == null)
+            $this->selectedMovie['cover'] = '/storage/covers/No_Cover.jpg';
+        else $this->selectedMovie['cover'] = "https://image.tmdb.org/t/p/original" . $this->selectedMovie['cover'];
+
 //        dd($this->selectedMovie->toArray());
         $this->showModal = true;
 //        dump($this->selectedMovie);

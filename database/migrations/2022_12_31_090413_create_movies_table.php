@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->float('price', 5, 2)->default(4.99);
             $table->string('release_date');
             $table->longText('overview');
-            $table->string('cover');
+            $table->string('cover')->nullable();
             $table->timestamps();
         });
         // Insert some records (inside up-function, after create method)

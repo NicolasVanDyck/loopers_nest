@@ -47,9 +47,10 @@
                     class="border-t border-gray-300">
                     <td>{{$movie->id}}</td>
                     <td>
-                        <img src="https://image.tmdb.org/t/p/original{{$movie->cover}}"
-                             alt="{{$movie->title}}"
-                             class="my-2 border object-cover">
+                        <img
+                            src="{{ $movie->cover ? "https://image.tmdb.org/t/p/original" . $movie->cover : '/storage/covers/No_Cover.jpg' }}"
+                            alt="{{$movie->title}}"
+                            class="my-2 border object-cover">
                     </td>
                     <td>€ {{$movie->price}}</td>
                     <td>{{\Carbon\Carbon::parse($movie->release_date)->format('F d, Y')}}</td>

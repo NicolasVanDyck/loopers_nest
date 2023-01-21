@@ -59,10 +59,10 @@
         @foreach($movies as $movie)
             <x-nicolas.card type="normal">
                 <x-slot name="id">{{$movie->id}}</x-slot>
-                <x-slot name="cover">{{$movie->cover}}</x-slot>
+                <x-slot
+                    name="cover">{{$movie->cover ? "https://image.tmdb.org/t/p/original" . $movie->cover : '/storage/covers/No_Cover.jpg'}}</x-slot>
                 <x-slot name="title">{{$movie->title}}</x-slot>
                 <x-slot name="overview">{{$movie->overview}}</x-slot>
-                <x-slot name="baseurl">{{$base_url}}</x-slot>
             </x-nicolas.card>
         @endforeach
     </div>
@@ -81,10 +81,10 @@
             <div class="flex justify-between space-x-4 pb-2 border-b border-gray-300">
                 <h3 class="font-body text-red-600">
                     {{ $selectedMovie->title ?? 'Title' }}<br/>
-                    <span class="font-body">{{ $selectedMovie->artist ?? 'Cast' }}</span>
+                    <span class="font-body">Cast</span>
                 </h3>
                 <img class="w-20"
-                     src="{{$base_url}}{{$selectedMovie->cover ?? asset('storage/covers/No_Cover.jpg') }}"
+                     src="{{$selectedMovie->cover ?? '/storage/covers/No_Cover.jpg' }}"
                      alt="">
             </div>
             @isset($selectedMovie->cast)
@@ -127,7 +127,7 @@
                     <span class="font-body">Overview</span>
                 </h3>
                 <img class="w-20"
-                     src="{{$base_url}}{{$selectedMovie->cover ?? asset('storage/covers/No_Cover.jpg') }}"
+                     src="{{$selectedMovie->cover ?? '/storage/covers/No_Cover.jpg' }}"
                      alt="">
             </div>
             @isset($selectedMovie->overview)
