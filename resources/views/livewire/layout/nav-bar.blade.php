@@ -12,9 +12,6 @@
             <x-jet-nav-link href="{{ route('store') }}" :active="request()->routeIs('store')">
                 Store
             </x-jet-nav-link>
-            <x-jet-nav-link href="{{ route('playground') }}" :active="request()->routeIs('playground')">
-                Playground
-            </x-jet-nav-link>
         </div>
 
         {{-- right navigation --}}

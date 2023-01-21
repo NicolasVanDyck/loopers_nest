@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\User;
 use Auth;
+use Hash;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -21,9 +22,9 @@ class Users extends Component
         'id'                 => null,
         'name'               => null,
         'email'              => null,
-        'active'             => 0,
-        'admin'              => 0,
-        'password'           => 'user1234',
+        'active'             => null,
+        'admin'              => null,
+        'password'           => null,
         'profile_photo_path' => '/storage/covers/No_Cover.jpg',
     ];
 
@@ -52,8 +53,8 @@ class Users extends Component
             $this->newUser['email'] = $user->email;
             $this->newUser['active'] = 0;
             $this->newUser['admin'] = 0;
-            $this->newUser['password'] = 'user1234';
-            $this->newUser['profile_photo_path'] = '/storage/covers/No_Cover.jpg';
+            $this->newUser['password'] = Hash::make('user1234');
+            $this->newUser['profile_photo_path'] = $user->profile_photo_path;
         } else {
             $this->reset('newUser');
         }

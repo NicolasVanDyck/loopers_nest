@@ -128,7 +128,8 @@
                                  class="mt-1 block w-full"/>
                 </div>
                 <img src=
-                         {{"https://image.tmdb.org/t/p/original" . $newMovie['cover'] ?? asset('storage/covers/No_Cover.jpg') }} alt=""
+                         "{{ $newMovie['cover'] ? "https://image.tmdb.org/t/p/original" . $newMovie['cover'] : '/storage/covers/No_Cover.jpg' }}"
+                     alt=""
                      class="mt-4 w-40 h-40 border border-gray-300 object-cover">
             </div>
         </x-slot>

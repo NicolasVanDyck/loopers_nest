@@ -50,7 +50,7 @@
                     <td>{{$user->id}}</td>
                     <td>
                         <img
-                            src="/storage/covers/No_Cover.jpg"
+                            src="{{ $user->profile_photo_path ? '/storage/' . $user->profile_photo_path : '/storage/covers/No_Cover.jpg' }}"
                             alt="no cover"
                             class="my-2 border object-cover">
                     </td>
@@ -128,16 +128,19 @@
                                  wire:model.defer="newUser.email"
                                  class="mt-1 block w-full"/>
                     <x-jet-label for="active" value="active" class="mt-4"/>
-                    <x-jet-checkbox id="active"
+                    <x-jet-checkbox name="active"
                                     wire:model.defer="newUser.active"
                                     class="mt-1 block"/>
                     <x-jet-label for="admin" value="admin" class="mt-4"/>
-                    <x-jet-checkbox id="admin"
+                    <x-jet-checkbox name="admin"
                                     wire:model.defer="newUser.admin"
                                     class="mt-1 block"/>
+
                 </div>
-                <img src="/storage/{{ $newUser['profile_photo_path'] }}" alt=""
-                     class="mt-4 w-40 h-40 border border-gray-300 object-cover">
+                <img
+                    src="{{ $newUser['profile_photo_path'] ? '/storage/' . $newUser['profile_photo_path'] : '/storage/covers/No_Cover.jpg' }}"
+                    alt=""
+                    class="mt-4 w-40 h-40 border border-gray-300 object-cover">
             </div>
         </x-slot>
         <x-slot name="footer">

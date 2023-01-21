@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Home;
-use App\Http\Controllers\Playground;
 use App\Http\Livewire\Admin\Genres;
 use App\Http\Livewire\Admin\Movies;
 use App\Http\Livewire\Admin\Users;
@@ -21,7 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Home::class, 'index'])->name('home');
 Route::get('store', Store::class)->name('store');
-Route::get('playground', [Playground::class, 'index'])->name('playground');
 
 Route::middleware(['auth', 'active', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::redirect('/', '/admin/movies');

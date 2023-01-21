@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -31,19 +30,19 @@ return new class extends Migration
         DB::table('users')->insert(
             [
                 [
-                    'name' => 'John Doe',
-                    'email' => 'john.doe@example.com',
-                    'admin' => true,
-                    'password' => Hash::make('admin1234'),
-                    'created_at' => now(),
+                    'name'              => 'John Doe',
+                    'email'             => 'john.doe@example.com',
+                    'admin'             => true,
+                    'password'          => Hash::make('admin1234'),
+                    'created_at'        => now(),
                     'email_verified_at' => now()
                 ],
                 [
-                    'name' => 'Jane Doe',
-                    'email' => 'jane.doe@example.com',
-                    'admin' => false,
-                    'password' => Hash::make('user1234'),
-                    'created_at' => now(),
+                    'name'              => 'Jane Doe',
+                    'email'             => 'jane.doe@example.com',
+                    'admin'             => false,
+                    'password'          => Hash::make('user1234'),
+                    'created_at'        => now(),
                     'email_verified_at' => now()
                 ]
             ]
@@ -55,11 +54,11 @@ return new class extends Migration
             $active = ($i + 1) % 6 !== 0;
             DB::table('users')->insert(
                 [
-                    'name' => "ITF User $i",
-                    'email' => "itf_user_$i@mailinator.com",
-                    'password' => Hash::make("itfuser$i"),
-                    'active' => $active,
-                    'created_at' => now(),
+                    'name'              => "ITF User $i",
+                    'email'             => "itf_user_$i@mailinator.com",
+                    'password'          => Hash::make("itfuser$i"),
+                    'active'            => $active,
+                    'created_at'        => now(),
                     'email_verified_at' => now()
                 ]
             );
