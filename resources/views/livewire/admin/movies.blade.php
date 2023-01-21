@@ -16,18 +16,46 @@
             <colgroup>
                 <col class="w-14">
                 <col class="w-20">
-                <col class="w-20">
+                <col class="w-16">
                 <col class="w-30">
                 <col class="w-max">
                 <col class="w-24">
             </colgroup>
             <thead>
-            <tr class="bg-gray-100 text-gray-700 [&>th]:p-2">
-                <th>#</th>
+            <tr class="bg-red-600 text-black [&>th]:p-2 cursor-pointer">
+                <th wire:click="resort('id')">
+                    <span data-tippy-content="Order by id">#</span>
+                    <x-heroicon-s-chevron-up
+                        class="w-5 text-black inline-block
+                        {{$orderAsc ?: 'rotate-180'}}
+                        {{$orderBy === 'id' ? 'inline-block' : 'hidden'}}
+                        "/>
+                </th>
                 <th></th>
-                <th>Price</th>
-                <th>Release</th>
-                <th class="text-left">Movie</th>
+                <th wire:click="resort('price')">
+                    <span data-tippy-content="Order by price">price</span>
+                    <x-heroicon-s-chevron-up
+                        class="w-5 text-black inline-block
+                        {{$orderAsc ?: 'rotate-180'}}
+                        {{$orderBy === 'price' ? 'inline-block' : 'hidden'}}
+                        "/>
+                </th>
+                <th wire:click="resort('release_date')">
+                    <span data-tippy-content="Order by release">release</span>
+                    <x-heroicon-s-chevron-up
+                        class="w-5 text-black inline-block
+                        {{$orderAsc ?: 'rotate-180'}}
+                        {{$orderBy === 'release_date' ? 'inline-block' : 'hidden'}}
+                        "/>
+                </th>
+                <th wire:click="resort('title')" class="text-left">
+                    <span data-tippy-content="Order by title">title</span>
+                    <x-heroicon-s-chevron-up
+                        class="w-5 text-black inline-block
+                        {{$orderAsc ?: 'rotate-180'}}
+                        {{$orderBy === 'title' ? 'inline-block' : 'hidden'}}
+                        "/>
+                </th>
                 <th>
                     <x-tmk.form.select id="perPage"
                                        wire:model="perPage"

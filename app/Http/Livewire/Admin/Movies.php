@@ -12,6 +12,8 @@ class Movies extends Component
 {
     use WithPagination;
 
+    public $orderBy = 'title';
+    public $orderAsc = true;
     // filter and pagination
     public $perPage = 5;
     public $name;
@@ -146,6 +148,17 @@ class Movies extends Component
         }
     }
 
+    public function resort($column)
+    {
+        if ($this->orderBy === $column) {
+            $this->orderAsc = !$this->orderAsc;
+        } else {
+            $this->orderAsc = true;
+        }
+        $this->orderBy = $column;
+    }
+
+
     public function mount()
     {
         $this->genres = Genre::orderBy('name')->get();
@@ -153,7 +166,7 @@ class Movies extends Component
 
     public function render()
     {
-        $movies = Movie::orderBy('title')
+        $movies = Movie::orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->where([
                 ['title', 'like', "%{$this->name}%"],
             ])

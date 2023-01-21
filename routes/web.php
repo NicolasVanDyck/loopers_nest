@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [Home::class, 'index'])->name('home');
 Route::get('store', Store::class)->name('store');
 
+
 Route::middleware(['auth', 'active', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::redirect('/', '/admin/movies');
     Route::get('genres', Genres::class)->name('genres');

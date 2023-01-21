@@ -10,6 +10,7 @@ class Genres extends Component
     public $orderBy = 'name';
     public $orderAsc = true;
     public $newGenre;
+    public $perPage = 5;
     public $editGenre = ['id' => null, 'name' => null];
 
     //validation rules
@@ -120,7 +121,7 @@ class Genres extends Component
     {
         $genres = Genre::withCount('movies')
             ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
-            ->get();
+            ->paginate($this->perPage);
         return view('livewire.admin.genres', compact('genres'))
             ->layout('layouts.loopers', [
                 'description' => 'Manage the genre of our movies',

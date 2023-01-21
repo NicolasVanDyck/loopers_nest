@@ -16,20 +16,55 @@
             <colgroup>
                 <col class="w-14">
                 <col class="w-20">
-                <col class="w-20">
+                <col class="w-26">
                 <col class="w-max">
-                <col class="w-20">
-                <col class="w-20">
+                <col class="w-30">
+                <col class="w-30">
                 <col class="w-24">
             </colgroup>
             <thead>
-            <tr class="bg-gray-100 text-gray-700 [&>th]:p-2">
-                <th>#</th>
+            <tr class="bg-red-600 text-black [&>th]:p-2 cursor-pointer">
+                <th wire:click="resort('id')">
+                    <span data-tippy-content="Order by id">#</span>
+                    <x-heroicon-s-chevron-up
+                        class="w-5 text-black inline-block
+                        {{$orderAsc ?: 'rotate-180'}}
+                        {{$orderBy === 'id' ? 'inline-block' : 'hidden'}}
+                        "/>
+                </th>
                 <th></th>
-                <th>Name</th>
-                <th>email</th>
-                <th>Active</th>
-                <th>Admin</th>
+                <th wire:click="resort('name')">
+                    <span data-tippy-content="Order by name">name</span>
+                    <x-heroicon-s-chevron-up
+                        class="w-5 text-black inline-block
+                        {{$orderAsc ?: 'rotate-180'}}
+                        {{$orderBy === 'name' ? 'inline-block' : 'hidden'}}
+                        "/>
+                </th>
+                <th wire:click="resort('email')">
+                    <span data-tippy-content="Order by email">email</span>
+                    <x-heroicon-s-chevron-up
+                        class="w-5 text-black inline-block
+                        {{$orderAsc ?: 'rotate-180'}}
+                        {{$orderBy === 'email' ? 'inline-block' : 'hidden'}}
+                        "/>
+                </th>
+                <th wire:click="resort('active')">
+                    <span data-tippy-content="Order by active">active</span>
+                    <x-heroicon-s-chevron-up
+                        class="w-5 text-black inline-block
+                        {{$orderAsc ?: 'rotate-180'}}
+                        {{$orderBy === 'active' ? 'inline-block' : 'hidden'}}
+                        "/>
+                </th>
+                <th wire:click="resort('admin')">
+                    <span data-tippy-content="Order by admin">admin</span>
+                    <x-heroicon-s-chevron-up
+                        class="w-5 text-black inline-block
+                        {{$orderAsc ?: 'rotate-180'}}
+                        {{$orderBy === 'admin' ? 'inline-block' : 'hidden'}}
+                        "/>
+                </th>
                 <th>
                     <x-tmk.form.select id="perPage"
                                        wire:model="perPage"

@@ -12,6 +12,9 @@ class Users extends Component
 {
     use WithPagination;
 
+    public $orderBy = 'name';
+    public $orderAsc = true;
+
     // filter and pagination
     public $name;
     public $perPage = 5;
@@ -121,10 +124,20 @@ class Users extends Component
         }
     }
 
+    public function resort($column)
+    {
+        if ($this->orderBy === $column) {
+            $this->orderAsc = !$this->orderAsc;
+        } else {
+            $this->orderAsc = true;
+        }
+        $this->orderBy = $column;
+    }
+
     public
     function render()
     {
-        $users = User::orderBy('name')
+        $users = User::orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
             ->where([
                 ['name', 'like', "%{$this->name}%"],
             ])

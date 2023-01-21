@@ -10,8 +10,6 @@
                              wire:keydown.tab="createGenre()"
                              wire:keydown.escape="resetNewGenre()"
                              class="w-full shadow-md placeholder-gray-300"/>
-                <x-phosphor-arrows-clockwise
-                    class="w-5 h-5 text-gray-200 absolute top-3 right-2 animate-spin"/>
             </div>
             <x-heroicon-o-information-circle
                 @click="open = !open"
@@ -42,12 +40,14 @@
     </x-tmk.section>
 
     <x-tmk.section>
-        <table class="text-center w-full">
+        <div class="my-4">{{ $genres->links() }}</div>
+        <table class="text-center w-full border border-gray-300">
             <colgroup>
                 <col class="w-14">
                 <col class="w-20">
                 <col class="w-16">
                 <col class="w-max">
+                <col class="w-24">
             </colgroup>
             <thead>
             <tr class="bg-red-600 text-black [&>th]:p-2 cursor-pointer">
@@ -77,6 +77,16 @@
                         {{$orderAsc ?: 'rotate-180'}}
                         {{$orderBy === 'name' ? 'inline-block' : 'hidden'}}
                         "/>
+                </th>
+                <th>
+                    <x-tmk.form.select id="perPage"
+                                       wire:model="perPage"
+                                       class="block mt-1 w-full">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </x-tmk.form.select>
                 </th>
             </tr>
             </thead>
