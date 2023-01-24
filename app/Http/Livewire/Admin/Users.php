@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use App\Models\User;
 use Auth;
 use Hash;
+use Illuminate\Validation\Rules\Password;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -35,15 +36,25 @@ class Users extends Component
     protected function rules()
     {
         return [
-            'newUser.name'  => 'required',
-            'newUser.email' => 'required|unique:users,email',
+            'newUser.name'               => 'required',
+            'newUser.email'              => 'required|email:rfc|unique:users,email,' . $this->newUser['id'],
+            'newUser.active'             => 'required|boolean',
+            'newUser.admin'              => 'required|boolean',
+            'newUser.password'           => ['required', 'string', Password::min(8)->mixedCase()->numbers()->uncompromised(3)],
+            'newUser.password_confirmed' => 'required|same:newUser.password',
+
+
         ];
     }
 
     // validation attributes
     protected $validationAttributes = [
-        'newUser.name'  => 'name',
-        'newUser.email' => 'e-mail',
+        'newUser.name'               => 'name',
+        'newUser.email'              => 'e-mail',
+        'newUser.active'             => 'active',
+        'newUser.admin'              => 'admin',
+        'newUser.password'           => 'password',
+        'newUser.password_confirmed' => 'confirm password',
     ];
 
     // set/reset $newUser and validation
@@ -54,9 +65,9 @@ class Users extends Component
             $this->newUser['id'] = $user->id;
             $this->newUser['name'] = $user->name;
             $this->newUser['email'] = $user->email;
-            $this->newUser['active'] = 0;
-            $this->newUser['admin'] = 0;
-            $this->newUser['password'] = Hash::make('user1234');
+            $this->newUser['active'] = $user->active;
+            $this->newUser['admin'] = $user->admin;
+            $this->newUser['password'] = '';
             $this->newUser['profile_photo_path'] = $user->profile_photo_path;
         } else {
             $this->reset('newUser');
@@ -82,7 +93,7 @@ class Users extends Component
             'email'              => $this->newUser['email'],
             'active'             => $this->newUser['active'],
             'admin'              => $this->newUser['admin'],
-            'password'           => $this->newUser['password'],
+            'password'           => Hash::make($this->newUser['password']),
             'profile_photo_path' => $this->newUser['profile_photo_path'],
         ]);
         $this->showModal = false;
@@ -96,15 +107,16 @@ class Users extends Component
     // update an existing User
     public function updateUser(User $user)
     {
-        $this->validateOnly('newUser.id');
+        $this->validate();
         $user->update([
             'name'               => $this->newUser['name'],
             'email'              => $this->newUser['email'],
             'active'             => $this->newUser['active'],
             'admin'              => $this->newUser['admin'],
-            'password'           => $this->newUser['password'],
+            'password'           => Hash::make($this->newUser['password']),
             'profile_photo_path' => $this->newUser['profile_photo_path'],
         ]);
+
         $this->showModal = false;
         $this->dispatchBrowserEvent('swal:toast', [
             'background' => 'success',

@@ -92,18 +92,22 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>
-                        @if($user->active)
-                            1
-                        @else
-                            0
-                        @endif
+                        <span class="flex justify-center">
+                            @if($user->active)
+                                <x-heroicon-s-check class="w-5"/>
+                            @else
+                                <x-heroicon-s-x-mark class="w-5"/>
+                            @endif
+                        </span>
                     </td>
                     <td>
-                        @if($user->admin)
-                            1
-                        @else
-                            0
-                        @endif
+                        <span class="flex justify-center">
+                            @if($user->admin)
+                                <x-heroicon-s-check class="w-5"/>
+                            @else
+                                <x-heroicon-s-x-mark class="w-5"/>
+                            @endif
+                        </span>
                     </td>
                     <td>
                         <div class="border border-gray-300 rounded-md overflow-hidden m-2 grid grid-cols-2 h-10">
@@ -170,6 +174,14 @@
                     <x-jet-checkbox name="admin"
                                     wire:model.defer="newUser.admin"
                                     class="mt-1 block"/>
+                    <x-jet-label for="password" value="password" class="mt-4"/>
+                    <x-jet-input id="password" type="password" name="password"
+                                 wire:model.defer="newUser.password"
+                                 class="mt-1 block w-full"/>
+                    <x-jet-label for="password_confirmation" value="Confirm Password" class="mt-4"/>
+                    <x-jet-input id="password_confirmation" type="password" name="password_confirmation"
+                                 wire:model.defer="newUser.password_confirmed"
+                                 class="mt-1 block w-full"/>
 
                 </div>
                 <img
